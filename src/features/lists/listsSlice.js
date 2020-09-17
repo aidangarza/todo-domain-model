@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import sample from './fixtures/ToDoList-sample';
-import ToDoList from "./models/ToDoList";
+import ToDoList from "../../models/ToDoList";
 import uuid from "../../util/uuid";
 
 export const listsSlice = createSlice({
@@ -15,21 +15,11 @@ export const listsSlice = createSlice({
     },
     update: (state, { payload: list }) => {
       state[list.id] = ToDoList.create(list);
-    },
-    addItem: (state, { payload: list }) => {
-      const { id } = list;
-      state[id] = ToDoList.create({
-        ...state[id],
-        items: [
-          ...state[id].items,
-          {}
-        ]
-      })
     }
   }
 });
 
-export const { add, update, addItem } = listsSlice.actions;
+export const { add, update } = listsSlice.actions;
 
 export const selectLists = state => state.lists;
 

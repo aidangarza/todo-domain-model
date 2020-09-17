@@ -6,7 +6,6 @@
   background-color: #282c34;
   min-height: 94vh;
   display: flex;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 3vh;

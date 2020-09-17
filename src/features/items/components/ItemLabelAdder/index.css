@@ -1,0 +1,6 @@
+.ItemLabelAdder {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 0 1em;
+  background-color: rgba(255, 255, 255, 0.2);
+}

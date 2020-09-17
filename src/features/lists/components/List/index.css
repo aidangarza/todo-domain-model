@@ -1,5 +1,5 @@
 .List {
-  flex: 1 0 auto;
+  flex: 1 0 300px;
   display: flex;
   flex-direction: column;
   border: 1px solid white;
@@ -13,23 +13,4 @@
 
 .List-name {
   margin: 3vh 0;
-}
-
-.List-input {
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 0;
-  margin: 0;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  text-align: center;
-}
-
-.List-input:focus {
-  outline: none;
-  border: none;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Label from "../../models/Label";
+import Label from "../../../../models/Label";
 import './index.css';
 
 export default function LabelPill ({ label }) {

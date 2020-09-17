@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import ToDoList from "../../models/ToDoList";
-import Item from "../Item";
-import ItemAdder from "../ItemAdder";
+import ToDoList from "../../../../models/ToDoList";
+import ItemAdder from "../../../items/components/ItemAdder";
 import {useDispatch} from "react-redux";
 import { update } from "../../listsSlice";
+import ListItems from "../../../items/components/ListItems";
+import NameInput from "../../../../components/NameInput";
 
 export default function List({ toDoList }) {
   const dispatch = useDispatch();
@@ -30,12 +31,12 @@ export default function List({ toDoList }) {
     <div className="List">
       <h1 className="List-name">
         {isEditing ? (
-          <input className="List-input" value={name} onChange={handleChange} onBlur={handleDone} autoFocus/>
+          <NameInput value={name} onChange={handleChange} onBlur={handleDone} autoFocus />
         ) : (
           <span onClick={() => setIsEditing(true)}>{toDoList.name}</span>
         )}
       </h1>
-      {toDoList.items.map(toDoItem => <Item toDoItem={toDoItem} key={toDoItem.id} />)}
+      <ListItems toDoList={toDoList} />
       <ItemAdder toDoList={toDoList} />
     </div>
   );
