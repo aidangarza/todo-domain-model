@@ -16,11 +16,20 @@
 }
 
 .List-input {
+  width: 100%;
+  font-family: inherit;
   font-size: inherit;
-  color: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: rgba(255, 255, 255, 0.9);
   padding: 0;
   margin: 0;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   text-align: center;
+}
+
+.List-input:focus {
+  outline: none;
+  border: none;
 }

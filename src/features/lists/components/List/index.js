@@ -19,7 +19,10 @@ export default function List({ toDoList }) {
   const handleDone = () => {
     if (name) {
       setIsEditing(false);
-      dispatch(update({ ...toDoList, name }));
+
+      if (name !== toDoList.name) {
+        dispatch(update({ ...toDoList, name }));
+      }
     }
   };
 
@@ -27,9 +30,9 @@ export default function List({ toDoList }) {
     <div className="List">
       <h1 className="List-name">
         {isEditing ? (
-          <input className="List-input" value={name} onChange={handleChange} onBlur={handleDone} />
+          <input className="List-input" value={name} onChange={handleChange} onBlur={handleDone} autoFocus/>
         ) : (
-          toDoList.name
+          <span onClick={() => setIsEditing(true)}>{toDoList.name}</span>
         )}
       </h1>
       {toDoList.items.map(toDoItem => <Item toDoItem={toDoItem} key={toDoItem.id} />)}
