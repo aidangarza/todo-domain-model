@@ -1,0 +1,16 @@
+.List {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 0 3vh 3vh;
+}
+
+.List > * {
+  margin-bottom: 3vh;
+}
+
+.List-name {
+  margin: 3vh 0;
+}

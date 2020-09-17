@@ -1,0 +1,13 @@
+.Item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid white;
+  padding: 1vh 3vh;
+  text-align: left;
+}
+
+.Item-content > * {
+  margin-right: 1em;
+}

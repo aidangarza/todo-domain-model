@@ -1,0 +1,27 @@
+.Checkbox {
+  cursor: pointer;
+}
+
+.Checkbox-input {
+  visibility: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.Checkbox-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.Checkbox-check {
+  display: none;
+}
+
+.Checkbox-input:checked + .Checkbox-circle > .Checkbox-check {
+  display: revert;
+}
