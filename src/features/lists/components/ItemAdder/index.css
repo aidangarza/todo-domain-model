@@ -1,0 +1,14 @@
+.ItemAdder {
+  flex: 0 0 auto;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4vw;
+  cursor: pointer;
+}
+
+.ItemAdder > span {
+  position: relative;
+  top: -0.09em;
+}

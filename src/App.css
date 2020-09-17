@@ -12,6 +12,6 @@
   padding: 3vh;
 }
 
-.App-link {
-  color: #61dafb;
+.App-main > * + * {
+  margin-left: 1vw;
 }

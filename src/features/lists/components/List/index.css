@@ -14,3 +14,13 @@
 .List-name {
   margin: 3vh 0;
 }
+
+.List-input {
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  text-align: center;
+}
