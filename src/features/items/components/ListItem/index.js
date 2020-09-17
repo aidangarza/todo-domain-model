@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import ToDoItem from "../../../../models/ToDoItem";
+import Item from "../../../../models/Item";
 import './index.css';
 import Checkbox from "./components/Checkbox";
 import {useDispatch} from "react-redux";
@@ -8,13 +8,13 @@ import {update} from '../../itemsSlice';
 import NameInput from "../../../../components/NameInput";
 import ItemLabelManager from "../ItemLabelManager";
 
-export default function Item({ toDoItem }) {
+export default function ListItem({ item }) {
   const dispatch = useDispatch();
-  const [isEditing, setIsEditing] = useState(!toDoItem.name);
-  const [name, setName] = useState(toDoItem.name);
+  const [isEditing, setIsEditing] = useState(!item.name);
+  const [name, setName] = useState(item.name);
 
   const handleCheck = ({ target }) => {
-    dispatch(update({...toDoItem, complete: target.checked}));
+    dispatch(update({...item, complete: target.checked}));
   };
 
   const handleChange = ({ target }) => {
@@ -25,8 +25,8 @@ export default function Item({ toDoItem }) {
     if (name) {
       setIsEditing(false);
 
-      if (name !== toDoItem.name) {
-        dispatch(update({ ...toDoItem, name }));
+      if (name !== item.name) {
+        dispatch(update({ ...item, name }));
       }
     }
   };
@@ -40,21 +40,21 @@ export default function Item({ toDoItem }) {
           ) : (
             <span
               onClick={() => {
-                setIsEditing(!toDoItem.complete)
+                setIsEditing(!item.complete)
               }}
-              className={toDoItem.complete ? 'Item-title__complete' : ''}
+              className={item.complete ? 'Item-title__complete' : ''}
             >
-              {toDoItem.name}
+              {item.name}
             </span>
           )}
         </span>
-        <ItemLabelManager toDoItem={toDoItem} />
+        <ItemLabelManager item={item} />
       </span>
-      <Checkbox id={toDoItem.id} checked={toDoItem.complete} onChange={handleCheck} />
+      <Checkbox id={item.id} checked={item.complete} onChange={handleCheck} />
     </div>
   )
 }
 
-Item.propTypes = {
-  toDoItem: PropTypes.instanceOf(ToDoItem)
+ListItem.propTypes = {
+  item: PropTypes.instanceOf(Item)
 };

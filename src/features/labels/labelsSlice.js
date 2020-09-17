@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import sample from './fixtures/Labels-sample';
-import ToDoItem from "../../models/ToDoItem";
+import Item from "../../models/Item";
 
 export const labelsSlice = createSlice({
   name: 'labels',
@@ -10,7 +10,7 @@ export const labelsSlice = createSlice({
   }, {}),
   reducers: {
     add: (state, { payload: label }) => {
-      state[label.name] = ToDoItem.create(label);
+      state[label.name] = Item.create(label);
     }
   }
 });

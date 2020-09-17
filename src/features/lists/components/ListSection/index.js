@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import ToDoList from "../../../../models/ToDoList";
+import List from "../../../../models/List";
 import ItemAdder from "../../../items/components/ItemAdder";
 import {useDispatch} from "react-redux";
 import { update } from "../../listsSlice";
 import ListItems from "../../../items/components/ListItems";
 import NameInput from "../../../../components/NameInput";
 
-export default function List({ toDoList }) {
+export default function ListSection({ list }) {
   const dispatch = useDispatch();
-  const [isEditing, setIsEditing] = useState(!toDoList.name);
-  const [name, setName] = useState(toDoList.name);
+  const [isEditing, setIsEditing] = useState(!list.name);
+  const [name, setName] = useState(list.name);
 
   const handleChange = ({ target }) => {
     setName(target.value);
@@ -21,8 +21,8 @@ export default function List({ toDoList }) {
     if (name) {
       setIsEditing(false);
 
-      if (name !== toDoList.name) {
-        dispatch(update({ ...toDoList, name }));
+      if (name !== list.name) {
+        dispatch(update({ ...list, name }));
       }
     }
   };
@@ -33,15 +33,15 @@ export default function List({ toDoList }) {
         {isEditing ? (
           <NameInput value={name} onChange={handleChange} onBlur={handleDone} autoFocus />
         ) : (
-          <span onClick={() => setIsEditing(true)}>{toDoList.name}</span>
+          <span onClick={() => setIsEditing(true)}>{list.name}</span>
         )}
       </h1>
-      <ListItems toDoList={toDoList} />
-      <ItemAdder toDoList={toDoList} />
+      <ListItems list={list} />
+      <ItemAdder list={list} />
     </div>
   );
 }
 
-List.propTypes = {
-  toDoList: PropTypes.instanceOf(ToDoList)
+ListSection.propTypes = {
+  list: PropTypes.instanceOf(List)
 };

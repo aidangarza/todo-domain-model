@@ -1,6 +1,6 @@
-import ToDoItem from "../../../models/ToDoItem";
+import Item from "../../../models/Item";
 import uuid from "../../../util/uuid";
-import sampleList from '../../lists/fixtures/ToDoList-sample';
+import sampleList from '../../lists/fixtures/List-sample';
 
 export default [
   {
@@ -31,4 +31,4 @@ export default [
     complete: false,
     listId: sampleList.id
   }
-].map(ToDoItem.create);
+].map(Item.create);

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import sample from './fixtures/ToDoItems-sample';
+import sample from './fixtures/Items-sample';
 import uuid from "../../util/uuid";
-import ToDoItem from "../../models/ToDoItem";
+import Item from "../../models/Item";
 
 export const itemsSlice = createSlice({
   name: 'items',
@@ -12,10 +12,10 @@ export const itemsSlice = createSlice({
   reducers: {
     add: (state, { payload: item }) => {
       const id = uuid('todoitem');
-      state[id] = ToDoItem.create({ ...item, id });
+      state[id] = Item.create({ ...item, id });
     },
     update: (state, { payload: item }) => {
-      state[item.id] = ToDoItem.create({
+      state[item.id] = Item.create({
         ...state[item.id],
         ...item
       });

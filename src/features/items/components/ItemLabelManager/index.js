@@ -1,30 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ToDoItem from "../../../../models/ToDoItem";
+import Item from "../../../../models/Item";
 import ItemLabelAdder from "../../../items/components/ItemLabelAdder";
 import ItemLabels from "../../../labels/components/ItemLabels";
 import './index.css';
 import {useDispatch} from "react-redux";
 import {update} from '../../itemsSlice';
 
-export default function ItemLabelManager({ toDoItem }) {
+export default function ItemLabelManager({ item }) {
   const dispatch = useDispatch();
 
   const removeLabel = ({ name }) => {
-    const labels = toDoItem.labels.filter(l => l !== name);
+    const labels = item.labels.filter(l => l !== name);
 
-    dispatch(update({ ...toDoItem, labels }));
+    dispatch(update({ ...item, labels }));
   };
 
   return (
     <span className="ItemLabelManager">
-      <ItemLabels toDoItem={toDoItem} onClick={removeLabel} />
-      <ItemLabelAdder toDoItem={toDoItem} />
+      <ItemLabels item={item} onClick={removeLabel} />
+      <ItemLabelAdder item={item} />
     </span>
   )
 }
 
 ItemLabelManager.propTypes = {
-  toDoItem: PropTypes.instanceOf(ToDoItem).isRequired,
+  item: PropTypes.instanceOf(Item).isRequired,
   onClick: PropTypes.func
 };

@@ -4,13 +4,13 @@ import {useSelector} from "react-redux";
 import {selectAllLabels} from "../../labelsSlice";
 import LabelPill from "../LabelPill";
 import './index.css';
-import ToDoItem from "../../../../models/ToDoItem";
+import Item from "../../../../models/Item";
 
-export default function LabelPicker({ toDoItem, onClick = () => {}}) {
+export default function LabelPicker({ item, onClick = () => {}}) {
   const labels = useSelector(selectAllLabels);
   const unusedLabels = useMemo(() =>
-    labels.filter(label => !toDoItem.labels.includes(label.name)),
-    [labels, toDoItem]
+    labels.filter(label => !item.labels.includes(label.name)),
+    [labels, item]
   );
 
   return (
@@ -25,6 +25,6 @@ export default function LabelPicker({ toDoItem, onClick = () => {}}) {
 }
 
 LabelPicker.propTypes = {
-  toDoItem: PropTypes.instanceOf(ToDoItem).isRequired,
+  item: PropTypes.instanceOf(Item).isRequired,
   onClick: PropTypes.func
 }

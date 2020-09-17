@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ToDoItem from "../../../../models/ToDoItem";
+import Item from "../../../../models/Item";
 import {useSelector} from "react-redux";
 import {selectItemLabels} from "../../labelsSlice";
 import LabelPill from "../LabelPill";
 
-export default function ItemLabels({ toDoItem, onClick }) {
-  const labels = useSelector(selectItemLabels(toDoItem.labels));
+export default function ItemLabels({ item, onClick }) {
+  const labels = useSelector(selectItemLabels(item.labels));
 
   return (
     <>
@@ -18,6 +18,6 @@ export default function ItemLabels({ toDoItem, onClick }) {
 }
 
 ItemLabels.propTypes = {
-  toDoItem: PropTypes.instanceOf(ToDoItem).isRequired,
+  item: PropTypes.instanceOf(Item).isRequired,
   onClick: PropTypes.func
 };

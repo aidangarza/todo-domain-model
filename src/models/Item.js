@@ -1,8 +1,8 @@
 import uuid from "../util/uuid";
 
-export default class ToDoItem {
+export default class Item {
   constructor({
-    id = uuid('todoitem'),
+    id = uuid('item'),
     name = '',
     labels = [],
     complete = false,
@@ -16,6 +16,6 @@ export default class ToDoItem {
   }
 
   static create(data) {
-    return Object.freeze(new ToDoItem(data));
+    return Object.freeze(new Item(data));
   }
 }

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import sample from './fixtures/ToDoList-sample';
-import ToDoList from "../../models/ToDoList";
+import sample from './fixtures/List-sample';
+import List from "../../models/List";
 import uuid from "../../util/uuid";
 
 export const listsSlice = createSlice({
@@ -11,10 +11,10 @@ export const listsSlice = createSlice({
   reducers: {
     add: state => {
       const id = uuid('todolist');
-      state[id] = ToDoList.create({ id });
+      state[id] = List.create({ id });
     },
     update: (state, { payload: list }) => {
-      state[list.id] = ToDoList.create(list);
+      state[list.id] = List.create(list);
     }
   }
 });

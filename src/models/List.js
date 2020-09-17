@@ -1,6 +1,6 @@
 import uuid from "../util/uuid";
 
-export default class ToDoList {
+export default class List {
   constructor({
     id = uuid('todolist'),
     name = ''
@@ -10,6 +10,6 @@ export default class ToDoList {
   }
 
   static create(data) {
-    return Object.freeze(new ToDoList(data));
+    return Object.freeze(new List(data));
   }
 }

@@ -19,9 +19,9 @@
 }
 
 .Checkbox-check {
-  display: none;
+  opacity: 0.1;
 }
 
 .Checkbox-input:checked + .Checkbox-circle > .Checkbox-check {
-  display: revert;
+  opacity: 1;
 }
