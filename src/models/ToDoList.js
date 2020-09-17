@@ -1,4 +1,3 @@
-import ToDoItem from "./ToDoItem";
 import uuid from "../util/uuid";
 
 export default class ToDoList {

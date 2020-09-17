@@ -1,4 +1,3 @@
-import Label from "./Label";
 import uuid from "../util/uuid";
 
 export default class ToDoItem {

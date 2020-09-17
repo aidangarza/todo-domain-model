@@ -6,7 +6,7 @@ import Checkbox from "./components/Checkbox";
 import {useDispatch} from "react-redux";
 import {update} from '../../itemsSlice';
 import NameInput from "../../../../components/NameInput";
-import ItemLabels from "../../../labels/components/ItemLabels";
+import ItemLabelManager from "../ItemLabelManager";
 
 export default function Item({ toDoItem }) {
   const dispatch = useDispatch();
@@ -38,10 +38,17 @@ export default function Item({ toDoItem }) {
           {isEditing ? (
             <NameInput value={name} onChange={handleChange} onBlur={handleDone} autoFocus/>
           ) : (
-            <span onClick={() => setIsEditing(true)}>{toDoItem.name}</span>
+            <span
+              onClick={() => {
+                setIsEditing(!toDoItem.complete)
+              }}
+              className={toDoItem.complete ? 'Item-title__complete' : ''}
+            >
+              {toDoItem.name}
+            </span>
           )}
         </span>
-        <ItemLabels toDoItem={toDoItem} />
+        <ItemLabelManager toDoItem={toDoItem} />
       </span>
       <Checkbox id={toDoItem.id} checked={toDoItem.complete} onChange={handleCheck} />
     </div>

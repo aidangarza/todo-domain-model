@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import sample from './fixtures/Labels-sample';
-import uuid from "../../util/uuid";
 import ToDoItem from "../../models/ToDoItem";
 
 export const labelsSlice = createSlice({
@@ -19,5 +18,6 @@ export const labelsSlice = createSlice({
 export const { add } = labelsSlice.actions;
 
 export const selectItemLabels = labelNames => state => labelNames.map(name => state.labels[name]);
+export const selectAllLabels = state => Object.values(state.labels);
 
 export default labelsSlice.reducer;

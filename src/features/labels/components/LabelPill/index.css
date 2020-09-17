@@ -2,4 +2,14 @@
   display: inline-block;
   border-radius: 12px;
   padding: 0 1em;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.LabelPill__inactive {
+  background-color: transparent !important;
+}
+
+.LabelPill__active {
+  color: white !important;
 }

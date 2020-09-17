@@ -1,0 +1,9 @@
+.LabelPicker {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.LabelPicker-item {
+  margin: 0.25em 0;
+}

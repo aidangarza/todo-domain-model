@@ -18,3 +18,7 @@
 .Item-content > * {
   margin-right: 1em;
 }
+
+.Item-title__complete {
+  text-decoration: line-through;
+}
