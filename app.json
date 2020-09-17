@@ -1,17 +1,7 @@
 {
-  "addons": [],
   "buildpacks": [
     {
-      "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz"
+      "url": "mars/create-react-app"
     }
-  ],
-  "env": {},
-  "formation": {
-    "web": {
-      "quantity": 1
-    }
-  },
-  "name": "todo-domain-model",
-  "scripts": {},
-  "stack": "heroku-18"
+  ]
 }
