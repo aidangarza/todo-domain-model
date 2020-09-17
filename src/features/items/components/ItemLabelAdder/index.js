@@ -15,7 +15,7 @@ export default function ItemLabelAdder({ toDoItem }) {
 
   return (
     <span className="ItemLabelAdder">
-      <a href="#" className="ItemLabelAdder-button" onClick={() => setOpen(!open)}>{open ? <>&times;</> : '+'}</a>
+      <span className="ItemLabelAdder-button" onClick={() => setOpen(!open)}>{open ? <>&times;</> : '+'}</span>
       {open && (
         <div className="ItemLabelAdder-picker">
           <LabelPicker toDoItem={toDoItem} onClick={addLabel} />

@@ -16,5 +16,13 @@ export default [
   {
     name: 'bakery',
     color: 'purple'
+  },
+  {
+    name: 'clothing',
+    color: 'pink'
+  },
+  {
+    name: 'toiletries',
+    color: 'turquoise'
   }
 ].map(Label.create);
