@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## Summary
+
+This app was created to demonstrate methods for making an application's domain model a core structure in its architecture. The domain model is all of the nouns in a project and their relationships to each other. By defining each model as a JavaScript Class, and naming features and components consistently based on the model that they interact with, we can build front-end applications that are easier to understand and maintain.
+
+A presentation on these concepts was given at the [Downtown ReactJS Meetup](https://www.meetup.com/ReactJS-ATX) in Austin on September 29th, 2020.
+
+## Demo
+
+This app deploys to [https://todo-domain-model.herokuapp.com](https://todo-domain-model.herokuapp.com).
+
 ## Available Scripts
 
 In the project directory, you can run:
