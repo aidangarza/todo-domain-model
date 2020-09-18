@@ -32,9 +32,9 @@ export default function ListItem({ item }) {
   };
 
   return (
-    <div className="Item">
-      <span className="Item-content">
-        <span className="Item-title">
+    <div className="ListItem">
+      <span className="ListItem-content">
+        <span className="ListItem-title">
           {isEditing ? (
             <NameInput value={name} onChange={handleChange} onBlur={handleDone} autoFocus/>
           ) : (
@@ -42,7 +42,7 @@ export default function ListItem({ item }) {
               onClick={() => {
                 setIsEditing(!item.complete)
               }}
-              className={item.complete ? 'Item-title__complete' : ''}
+              className={item.complete ? 'ListItem-title__complete' : ''}
             >
               {item.name}
             </span>

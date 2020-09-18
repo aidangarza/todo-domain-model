@@ -1,5 +1,6 @@
-.List {
-  flex: 1 0 300px;
+.ListSection {
+  flex: 1 0 400px;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
   border: 1px solid white;
@@ -7,10 +8,10 @@
   padding: 0 3vh 3vh;
 }
 
-.List > * {
+.ListSection > * {
   margin-bottom: 3vh;
 }
 
-.List-name {
+.ListSection-name {
   margin: 3vh 0;
 }

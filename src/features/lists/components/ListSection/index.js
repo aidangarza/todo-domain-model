@@ -28,8 +28,8 @@ export default function ListSection({ list }) {
   };
 
   return (
-    <div className="List">
-      <h1 className="List-name">
+    <div className="ListSection">
+      <h1 className="ListSection-name">
         {isEditing ? (
           <NameInput value={name} onChange={handleChange} onBlur={handleDone} autoFocus />
         ) : (

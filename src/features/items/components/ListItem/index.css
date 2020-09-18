@@ -1,4 +1,4 @@
-.Item {
+.ListItem {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -8,17 +8,18 @@
   text-align: left;
 }
 
-.Item-content {
-  flex: 1 0 auto;
+.ListItem-content {
+  flex: 1 1 0px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
 
-.Item-content > * {
+.ListItem-content > * {
   margin-right: 1em;
 }
 
-.Item-title__complete {
+.ListItem-title__complete {
   text-decoration: line-through;
 }
