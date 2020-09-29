@@ -12,8 +12,8 @@ export default function ItemLabelAdder({ item }) {
   const [open, setOpen] = useState(false);
 
   const addLabel = ({ name }) => {
-    const labels = [...item.labels, name];
-    dispatch(update({ ...item, labels }));
+    const labelNames = [...item.labelNames, name];
+    dispatch(update({ ...item, labelNames }));
   };
 
   return (

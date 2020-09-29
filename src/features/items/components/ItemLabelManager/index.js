@@ -11,9 +11,9 @@ export default function ItemLabelManager({ item }) {
   const dispatch = useDispatch();
 
   const removeLabel = ({ name }) => {
-    const labels = item.labels.filter(l => l !== name);
+    const labelNames = item.labelNames.filter(l => l !== name);
 
-    dispatch(update({ ...item, labels }));
+    dispatch(update({ ...item, labelNames }));
   };
 
   return (

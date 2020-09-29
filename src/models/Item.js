@@ -4,13 +4,13 @@ export default class Item {
   constructor({
     id = uuid('item'),
     name = '',
-    labels = [],
+    labelNames = [],
     complete = false,
     listId
   } = {}) {
     this.id = id;
     this.name = name;
-    this.labels = labels;
+    this.labelNames = labelNames;
     this.complete = complete;
     this.listId = listId;
   }

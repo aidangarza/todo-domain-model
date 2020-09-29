@@ -9,7 +9,7 @@ import Item from "../../../../models/Item";
 export default function LabelPicker({ item, onClick = () => {}}) {
   const labels = useSelector(selectAllLabels);
   const unusedLabels = useMemo(() =>
-    labels.filter(label => !item.labels.includes(label.name)),
+    labels.filter(label => !item.labelNames.includes(label.name)),
     [labels, item]
   );
 

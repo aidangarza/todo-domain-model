@@ -6,7 +6,7 @@ import {selectItemLabels} from "../../labelsSlice";
 import LabelPill from "../LabelPill";
 
 export default function ItemLabels({ item, onClick }) {
-  const labels = useSelector(selectItemLabels(item.labels));
+  const labels = useSelector(selectItemLabels(item.labelNames));
 
   return (
     <>

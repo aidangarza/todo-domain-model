@@ -6,28 +6,28 @@ export default [
   {
     id: uuid('todoitem'),
     name: 'Bananas',
-    labels: ['produce'],
+    labelNames: ['produce'],
     complete: false,
     listId: sampleList.id
   },
   {
     id: uuid('todoitem'),
     name: 'Apples',
-    labels: ['produce'],
+    labelNames: ['produce'],
     complete: true,
     listId: sampleList.id
   },
   {
     id: uuid('todoitem'),
     name: 'Milk',
-    labels: ['dairy', 'cold'],
+    labelNames: ['dairy', 'cold'],
     complete: false,
     listId: sampleList.id
   },
   {
     id: uuid('todoitem'),
     name: 'Bread',
-    labels: ['bakery'],
+    labelNames: ['bakery'],
     complete: false,
     listId: sampleList.id
   }
