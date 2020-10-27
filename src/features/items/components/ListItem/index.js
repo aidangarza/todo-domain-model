@@ -3,18 +3,15 @@ import PropTypes from 'prop-types';
 import Item from "../../../../models/Item";
 import './index.css';
 import Checkbox from "./components/Checkbox";
-import {useDispatch} from "react-redux";
-import {update} from '../../itemsSlice';
 import NameInput from "../../../../components/NameInput";
 import ItemLabelManager from "../ItemLabelManager";
 
 export default function ListItem({ item, adding, onAbort = () => {}, onSave = () => {} }) {
-  const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(!item.name);
   const [name, setName] = useState(item.name);
 
   const handleCheck = ({ target }) => {
-    dispatch(update({...item, complete: target.checked}));
+    onSave({...item, complete: target.checked});
   };
 
   const handleChange = ({ target }) => {
