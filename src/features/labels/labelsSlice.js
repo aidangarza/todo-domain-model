@@ -1,23 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
-import sample from './fixtures/Labels-sample';
-import Item from "../../models/Item";
+import assignKeyAs from "../../util/assignKeyAs";
+import Label from "../../models/Label";
+import {initialResponse} from "../../hooks/useApi";
 
 export const labelsSlice = createSlice({
   name: 'labels',
-  initialState: sample.reduce((acc, label) => {
-    acc[label.name] = label;
-    return acc;
-  }, {}),
+  initialState: initialResponse,
   reducers: {
+    set: (state, { payload: response }) => {
+      return {
+        ...response,
+        data: response.data ? assignKeyAs(response.data, Label, 'name') : null
+      }
+    },
     add: (state, { payload: label }) => {
-      state[label.name] = Item.create(label);
+      state[label.name] = Label.create(label);
     }
   }
 });
 
-export const { add } = labelsSlice.actions;
+export const { set, add } = labelsSlice.actions;
 
-export const selectItemLabels = labelNames => state => labelNames.map(name => state.labels[name]);
-export const selectAllLabels = state => Object.values(state.labels);
+export const selectLabels = state => state.labels;
 
 export default labelsSlice.reducer;

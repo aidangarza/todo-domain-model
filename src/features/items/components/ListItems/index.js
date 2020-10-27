@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import List from "../../../../models/List";
-import {useSelector} from "react-redux";
-import {selectListItems} from "../../itemsSlice";
 import ListItem from "../ListItem";
+import useListItems from "../../hooks/useListItems";
 
 export default function ListItems({ list }) {
-  const items = useSelector(selectListItems(list.id));
+  const [{ data: items }] = useListItems({ listId: list.id })
 
   return (
     <React.Fragment>

@@ -1,15 +1,15 @@
 import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
-import {useSelector} from "react-redux";
-import {selectAllLabels} from "../../labelsSlice";
 import LabelPill from "../LabelPill";
 import './index.css';
 import Item from "../../../../models/Item";
+import useLabels from "../../hooks/useLabels";
 
 export default function LabelPicker({ item, onClick = () => {}}) {
-  const labels = useSelector(selectAllLabels);
+  const [{ data: labels }] = useLabels();
+
   const unusedLabels = useMemo(() =>
-    labels.filter(label => !item.labelNames.includes(label.name)),
+    Object.values(labels || {}).filter(label => !item.labelNames.includes(label.name)),
     [labels, item]
   );
 

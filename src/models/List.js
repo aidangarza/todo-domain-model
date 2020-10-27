@@ -1,11 +1,9 @@
 import uuid from "../util/uuid";
-import { WEBFLOW_API_TOKEN } from "../constants/api";
-
-const LIST_COLLECTION_ID = '5f96295862f66d0284257332';
+import {API_BASE_URL} from "../constants/api";
 
 export default class List {
   constructor({
-    id = uuid('todolist'),
+    id = uuid('list'),
     name = ''
   } = {}) {
     this.id = id;
@@ -19,12 +17,8 @@ export default class List {
   static api = {
     get() {
       return {
-        url: `${API_BASE_URL}/collections/${LIST_COLLECTION_ID}/items`,
-        method: 'get',
-        headers: new Headers({
-          'Authorization': `Bearer ${WEBFLOW_API_TOKEN}`,
-          'accept-version': '1.0.0'
-        })
+        url: `${API_BASE_URL}/lists.json`,
+        method: 'get'
       }
     }
   }
