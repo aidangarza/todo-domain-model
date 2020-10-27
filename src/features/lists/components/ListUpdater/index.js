@@ -1,50 +1,42 @@
 import React, {useEffect, useState} from 'react';
-import './index.css';
+import PropTypes from 'prop-types';
 import ListSection from "../ListSection";
 import List from "../../../../models/List";
 import useApi from "../../../../hooks/useApi";
 import Scrim from "../../../../components/Scrim";
 import {useDispatch} from "react-redux";
-import {add} from '../../listsSlice';
+import {update} from '../../listsSlice';
 
-export default function ListAdder() {
+export default function ListUpdater({ list }) {
   const dispatch = useDispatch();
 
-  const [list, setList] = useState(new List());
-
-  const [isAdding, setIsAdding] = useState(false);
-
-  const [{ pending, complete, data }, createList, resetRequest] = useApi(List.api.create);
+  const [{ pending, complete, data }, updateList, resetRequest] = useApi(List.api.update);
 
   useEffect(() => {
     if (complete) {
       // Firebase does not return the whole data object on
       // a successful post; so, we have to combine the local
       // name with the "name" (ID!) from the request data.
-      dispatch(add({ id: data.name, name: list.name }));
-      setIsAdding(false);
-      setList(new List());
+      dispatch(update({ ...data, id: list.id }));
       resetRequest();
     }
   }, [complete, list, data, dispatch, resetRequest]);
 
   const handleSave = savedList => {
-    setList(savedList);
-    createList(savedList);
+    updateList(savedList);
   };
 
   return (
     <>
-      {isAdding ? (
-        <ListSection
-          list={list}
-          onAbort={() => setIsAdding(false)}
-          onSave={handleSave}
-        />
-      ) : (
-      <div className="ListAdder" onClick={() => setIsAdding(true)}>+</div>
-      )}
+      <ListSection
+        list={list}
+        onSave={handleSave}
+      />
       {pending && <Scrim />}
     </>
   );
 }
+
+ListUpdater.propTypes = {
+  list: PropTypes.instanceOf(List)
+};

@@ -29,6 +29,13 @@ export default class List {
         body: JSON.stringify({ name })
       }
     },
+    update({ id, name }) {
+      return {
+        url: `${API_BASE_URL}/lists/${id}.json`,
+        method: 'put',
+        body: JSON.stringify({ name })
+      }
+    },
     delete({ id }) {
       return {
         url: `${API_BASE_URL}/lists/${id}.json`,
