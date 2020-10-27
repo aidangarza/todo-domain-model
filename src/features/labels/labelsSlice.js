@@ -12,14 +12,11 @@ export const labelsSlice = createSlice({
         ...response,
         data: response.data ? assignKeyAs(response.data, Label, 'name') : null
       }
-    },
-    add: (state, { payload: label }) => {
-      state[label.name] = Label.create(label);
     }
   }
 });
 
-export const { set, add } = labelsSlice.actions;
+export const { set } = labelsSlice.actions;
 
 export const selectLabels = state => state.labels;
 

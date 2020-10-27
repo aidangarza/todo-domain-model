@@ -29,8 +29,10 @@ export default function useItems({ listId, auto = true } = {}) {
   // with each change to the local response state
   useEffect(() => {
     if (
-      items.complete !== responseState.complete ||
-      items.pending !== responseState.pending
+      !responseState.pristine && (
+        items.complete !== responseState.complete ||
+        items.pending !== responseState.pending
+      )
     ) {
       dispatch(set(responseState));
     }

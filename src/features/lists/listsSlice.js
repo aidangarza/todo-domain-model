@@ -14,9 +14,11 @@ export const listsSlice = createSlice({
         data: response.data ? assignKeyAs(response.data, List) : null
       }
     },
-    add: state => {
-      const id = uuid('todolist');
-      state.data[id] = List.create({ id });
+    add: (state, { payload: list }) => {
+      state.data[list.id] = List.create(list);
+    },
+    remove: (state, { payload: list }) => {
+      delete state.data[list.id];
     },
     update: (state, { payload: list }) => {
       state.data[list.id] = List.create(list);
@@ -24,7 +26,7 @@ export const listsSlice = createSlice({
   }
 });
 
-export const { set, add, update } = listsSlice.actions;
+export const { set, add, remove, update } = listsSlice.actions;
 
 export const selectLists = state => state.lists;
 

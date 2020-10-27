@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import './index.css';
 import List from "../../../../models/List";
 import ItemAdder from "../../../items/components/ItemAdder";
-import {useDispatch} from "react-redux";
-import { update } from "../../listsSlice";
 import ListItems from "../../../items/components/ListItems";
 import NameInput from "../../../../components/NameInput";
+import ListDeleter from "../ListDeleter";
 
-export default function ListSection({ list }) {
-  const dispatch = useDispatch();
+export default function ListSection({ list, onAbort = () => {}, onSave = () => {} }) {
   const [isEditing, setIsEditing] = useState(!list.name);
   const [name, setName] = useState(list.name);
 
@@ -22,13 +20,17 @@ export default function ListSection({ list }) {
       setIsEditing(false);
 
       if (name !== list.name) {
-        dispatch(update({ ...list, name }));
+        onSave({ ...list, name });
       }
+    } else {
+      onAbort();
     }
   };
 
   return (
     <div className="ListSection">
+      {/* Ignore this! Just want to make the demo data stay... */}
+      {list.id !== 'grocerylist' && <ListDeleter list={list} />}
       <h1 className="ListSection-name">
         {isEditing ? (
           <NameInput value={name} onChange={handleChange} onBlur={handleDone} autoFocus />
@@ -43,5 +45,7 @@ export default function ListSection({ list }) {
 }
 
 ListSection.propTypes = {
-  list: PropTypes.instanceOf(List)
+  list: PropTypes.instanceOf(List),
+  onAbort: PropTypes.func,
+  onSave: PropTypes.func
 };

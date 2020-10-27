@@ -15,7 +15,7 @@ export default function useLists({ auto = true } = {}) {
   // the properties complete, pending, data, and error;
   // and a function that initiates the HTTP request when
   // it is called.
-  const [responseState, getLists] = useApi(List.api.get);
+  const [responseState, getLists] = useApi(List.api.list);
   // On mount, if the response in redux isn't complete,
   // request the lists
   useEffect(() => {
@@ -29,8 +29,10 @@ export default function useLists({ auto = true } = {}) {
   // with each change to the local response state
   useEffect(() => {
     if (
-      lists.complete !== responseState.complete ||
-      lists.pending !== responseState.pending
+      !responseState.pristine && (
+        lists.complete !== responseState.complete ||
+        lists.pending !== responseState.pending
+      )
     ) {
       dispatch(set(responseState));
     }

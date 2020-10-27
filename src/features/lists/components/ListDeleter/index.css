@@ -1,0 +1,15 @@
+.ListDeleter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 5vh;
+  height: 5vh;
+  width: 5vh;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  color: white;
+  border-radius: 12px;
+}

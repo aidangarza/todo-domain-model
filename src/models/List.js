@@ -1,5 +1,6 @@
 import uuid from "../util/uuid";
 import {API_BASE_URL} from "../constants/api";
+import nameToId from "../util/nameToId";
 
 export default class List {
   constructor({
@@ -15,10 +16,23 @@ export default class List {
   }
 
   static api = {
-    get() {
+    list() {
       return {
         url: `${API_BASE_URL}/lists.json`,
         method: 'get'
+      }
+    },
+    create({ name }) {
+      return {
+        url: `${API_BASE_URL}/lists.json`,
+        method: 'post',
+        body: JSON.stringify({ name })
+      }
+    },
+    delete({ id }) {
+      return {
+        url: `${API_BASE_URL}/lists/${id}.json`,
+        method: 'delete'
       }
     }
   }

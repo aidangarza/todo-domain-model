@@ -15,8 +15,8 @@ export const itemsSlice = createSlice({
       }
     },
     add: (state, { payload: item }) => {
-      const id = uuid('todoitem');
-      state[id] = Item.create({ ...item, id });
+      const id = uuid('item');
+      state.data[id] = Item.create({ ...item, id });
     },
     update: (state, { payload: item }) => {
       state[item.id] = Item.create({
