@@ -15,7 +15,7 @@ export default function useLabels({ auto = true } = {}) {
   // the properties complete, pending, data, and error;
   // and a function that initiates the HTTP request when
   // it is called.
-  const [responseState, getLabels] = useApi(Label.api.get);
+  const [responseState, getLabels] = useApi(Label.api.list);
   // On mount, if the response in redux isn't complete,
   // request the labels
   useEffect(() => {

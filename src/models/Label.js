@@ -14,7 +14,7 @@ export default class Label {
   }
 
   static api = {
-    get() {
+    list() {
       return {
         url: `${API_BASE_URL}/labels.json`,
         method: 'get'
