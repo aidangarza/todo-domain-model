@@ -4,22 +4,18 @@ import Item from "../../../../models/Item";
 import ItemLabelAdder from "../../../items/components/ItemLabelAdder";
 import ItemLabels from "../../../labels/components/ItemLabels";
 import './index.css';
-import {useDispatch} from "react-redux";
-import {update} from '../../itemsSlice';
 
-export default function ItemLabelManager({ item }) {
-  const dispatch = useDispatch();
-
+export default function ItemLabelManager({ item, onChange }) {
   const removeLabel = ({ name }) => {
-    const labelNames = item.labelNames.filter(l => l !== name);
+    const labelNames = item.labelNames.split(',').filter(l => l !== name).join(',');
 
-    dispatch(update({ ...item, labelNames }));
+    onChange({ ...item, labelNames });
   };
 
   return (
     <span className="ItemLabelManager">
       <ItemLabels item={item} onClick={removeLabel} />
-      <ItemLabelAdder item={item} />
+      <ItemLabelAdder item={item} onChange={onChange} />
     </span>
   )
 }

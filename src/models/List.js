@@ -1,6 +1,5 @@
 import uuid from "../util/uuid";
 import {API_BASE_URL} from "../constants/api";
-import nameToId from "../util/nameToId";
 
 export default class List {
   constructor({

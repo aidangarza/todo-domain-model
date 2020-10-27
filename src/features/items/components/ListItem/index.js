@@ -8,7 +8,7 @@ import {update} from '../../itemsSlice';
 import NameInput from "../../../../components/NameInput";
 import ItemLabelManager from "../ItemLabelManager";
 
-export default function ListItem({ item }) {
+export default function ListItem({ item, adding, onAbort = () => {}, onSave = () => {} }) {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(!item.name);
   const [name, setName] = useState(item.name);
@@ -26,8 +26,10 @@ export default function ListItem({ item }) {
       setIsEditing(false);
 
       if (name !== item.name) {
-        dispatch(update({ ...item, name }));
+        onSave({ ...item, name })
       }
+    } else {
+      onAbort();
     }
   };
 
@@ -48,13 +50,16 @@ export default function ListItem({ item }) {
             </span>
           )}
         </span>
-        <ItemLabelManager item={item} />
+        {!adding && <ItemLabelManager item={item} onChange={onSave} />}
       </span>
-      <Checkbox id={item.id} checked={item.complete} onChange={handleCheck} />
+      {!adding && <Checkbox id={item.id} checked={item.complete} onChange={handleCheck} />}
     </div>
   )
 }
 
 ListItem.propTypes = {
-  item: PropTypes.instanceOf(Item)
+  item: PropTypes.instanceOf(Item),
+  adding: PropTypes.bool,
+  onAbort: PropTypes.func,
+  onSave: PropTypes.func
 };

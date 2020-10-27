@@ -1,35 +1,35 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import ListSection from "../ListSection";
-import List from "../../../../models/List";
+import ListItem from "../ListItem";
 import useApi from "../../../../hooks/useApi";
 import Scrim from "../../../../components/Scrim";
 import {useDispatch} from "react-redux";
-import {update} from '../../listsSlice';
+import {update} from '../../itemsSlice';
+import Item from "../../../../models/Item";
 
-export default function ListUpdater({ list }) {
+export default function ListItemUpdater({ item }) {
   const dispatch = useDispatch();
 
-  const [{ pending, complete, data }, updateList, resetRequest] = useApi(List.api.update);
+  const [{ pending, complete, data }, updateItem, resetRequest] = useApi(Item.api.update);
 
   useEffect(() => {
     if (complete) {
       // Firebase does not return the whole data object on
       // a successful post; so, we have to combine the local
       // name with the "name" (ID!) from the request data.
-      dispatch(update({ ...data, id: list.id }));
+      dispatch(update({ ...data, id: item.id }));
       resetRequest();
     }
-  }, [complete, list, data, dispatch, resetRequest]);
+  }, [complete, item, data, dispatch, resetRequest]);
 
-  const handleSave = savedList => {
-    updateList(savedList);
+  const handleSave = savedItem => {
+    updateItem(savedItem);
   };
 
   return (
     <>
-      <ListSection
-        list={list}
+      <ListItem
+        item={item}
         onSave={handleSave}
       />
       {pending && <Scrim />}
@@ -37,6 +37,6 @@ export default function ListUpdater({ list }) {
   );
 }
 
-ListUpdater.propTypes = {
-  list: PropTypes.instanceOf(List)
+ListItemUpdater.propTypes = {
+  list: PropTypes.instanceOf(Item)
 };

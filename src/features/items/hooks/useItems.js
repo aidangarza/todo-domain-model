@@ -1,4 +1,4 @@
-import {useEffect, useMemo} from 'react';
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import useApi from "../../../hooks/useApi";
 import {set, selectItems} from "../itemsSlice";
@@ -15,7 +15,7 @@ export default function useItems({ listId, auto = true } = {}) {
   // the properties complete, pending, data, and error;
   // and a function that initiates the HTTP request when
   // it is called.
-  const [responseState, getItems] = useApi(Item.api.get);
+  const [responseState, getItems] = useApi(Item.api.list);
   // On mount, if the response in redux isn't complete,
   // request the lists
   useEffect(() => {

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import uuid from "../../util/uuid";
 import Item from "../../models/Item";
 import assignKeyAs from "../../util/assignKeyAs";
 import {initialResponse} from "../../hooks/useApi";
@@ -15,19 +14,18 @@ export const itemsSlice = createSlice({
       }
     },
     add: (state, { payload: item }) => {
-      const id = uuid('item');
-      state.data[id] = Item.create({ ...item, id });
+      state.data[item.id] = Item.create(item);
+    },
+    remove: (state, { payload: item }) => {
+      delete state.data[item.id];
     },
     update: (state, { payload: item }) => {
-      state[item.id] = Item.create({
-        ...state[item.id],
-        ...item
-      });
+      state.data[item.id] = Item.create(item);
     }
   }
 });
 
-export const { set, add, update } = itemsSlice.actions;
+export const { set, add, update, remove } = itemsSlice.actions;
 
 export const selectItems = state => state.items;
 

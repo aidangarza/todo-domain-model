@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import List from "../../models/List";
-import uuid from "../../util/uuid";
 import {initialResponse} from "../../hooks/useApi";
 import assignKeyAs from "../../util/assignKeyAs";
 

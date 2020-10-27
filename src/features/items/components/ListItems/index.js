@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import List from "../../../../models/List";
-import ListItem from "../ListItem";
+import ListItemUpdater from "../ListItemUpdater";
 import useListItems from "../../hooks/useListItems";
 
 export default function ListItems({ list }) {
@@ -10,7 +10,7 @@ export default function ListItems({ list }) {
   return (
     <React.Fragment>
       {items.map(item => (
-        <ListItem item={item} key={item.id} />
+        <ListItemUpdater item={item} key={item.id} />
       ))}
     </React.Fragment>
   )

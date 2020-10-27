@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import ListUpdater from "./features/lists/components/ListUpdater";
 import ListAdder from "./features/lists/components/ListAdder";
