@@ -1,30 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
-import sample from './fixtures/Items-sample';
-import uuid from "../../util/uuid";
 import Item from "../../models/Item";
+import assignKeyAs from "../../util/assignKeyAs";
+import {initialResponse} from "../../hooks/useApi";
 
 export const itemsSlice = createSlice({
   name: 'items',
-  initialState: sample.reduce((acc, item) => {
-    acc[item.id] = item;
-    return acc;
-  }, {}),
+  initialState: initialResponse,
   reducers: {
+    set: (state, { payload: response }) => {
+      return {
+        ...response,
+        data: response.data ? assignKeyAs(response.data, Item) : null
+      }
+    },
     add: (state, { payload: item }) => {
-      const id = uuid('todoitem');
-      state[id] = Item.create({ ...item, id });
+      state.data[item.id] = Item.create(item);
+    },
+    remove: (state, { payload: item }) => {
+      delete state.data[item.id];
     },
     update: (state, { payload: item }) => {
-      state[item.id] = Item.create({
-        ...state[item.id],
-        ...item
-      });
+      state.data[item.id] = Item.create(item);
     }
   }
 });
 
-export const { add, update } = itemsSlice.actions;
+export const { set, add, update, remove } = itemsSlice.actions;
 
-export const selectListItems = listId => state => Object.values(state.items).filter(item => item.listId === listId);
+export const selectItems = state => state.items;
 
 export default itemsSlice.reducer;

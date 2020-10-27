@@ -2,18 +2,15 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import LabelPicker from "../../../labels/components/LabelPicker";
-import {useDispatch} from "react-redux";
-import {update} from '../../itemsSlice';
 import Scrim from "../../../../components/Scrim";
 import Item from "../../../../models/Item";
 
-export default function ItemLabelAdder({ item }) {
-  const dispatch = useDispatch();
+export default function ItemLabelAdder({ item, onChange }) {
   const [open, setOpen] = useState(false);
 
   const addLabel = ({ name }) => {
-    const labelNames = [...item.labelNames, name];
-    dispatch(update({ ...item, labelNames }));
+    const labelNames = item.labelNames ? item.labelNames + ',' + name : name;
+    onChange({ ...item, labelNames });
   };
 
   return (

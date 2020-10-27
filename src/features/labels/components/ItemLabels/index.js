@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from "../../../../models/Item";
-import {useSelector} from "react-redux";
-import {selectItemLabels} from "../../labelsSlice";
 import LabelPill from "../LabelPill";
+import useItemLabels from "../../hooks/useItemLabels";
 
 export default function ItemLabels({ item, onClick }) {
-  const labels = useSelector(selectItemLabels(item.labelNames));
+  const [{ data: labels }] = useItemLabels({ labelNames: item.labelNames });
 
   return (
     <>

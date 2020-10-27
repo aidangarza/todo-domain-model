@@ -3,18 +3,15 @@ import PropTypes from 'prop-types';
 import Item from "../../../../models/Item";
 import './index.css';
 import Checkbox from "./components/Checkbox";
-import {useDispatch} from "react-redux";
-import {update} from '../../itemsSlice';
 import NameInput from "../../../../components/NameInput";
 import ItemLabelManager from "../ItemLabelManager";
 
-export default function ListItem({ item }) {
-  const dispatch = useDispatch();
+export default function ListItem({ item, adding, onAbort = () => {}, onSave = () => {} }) {
   const [isEditing, setIsEditing] = useState(!item.name);
   const [name, setName] = useState(item.name);
 
   const handleCheck = ({ target }) => {
-    dispatch(update({...item, complete: target.checked}));
+    onSave({...item, complete: target.checked});
   };
 
   const handleChange = ({ target }) => {
@@ -26,8 +23,10 @@ export default function ListItem({ item }) {
       setIsEditing(false);
 
       if (name !== item.name) {
-        dispatch(update({ ...item, name }));
+        onSave({ ...item, name })
       }
+    } else {
+      onAbort();
     }
   };
 
@@ -48,13 +47,16 @@ export default function ListItem({ item }) {
             </span>
           )}
         </span>
-        <ItemLabelManager item={item} />
+        {!adding && <ItemLabelManager item={item} onChange={onSave} />}
       </span>
-      <Checkbox id={item.id} checked={item.complete} onChange={handleCheck} />
+      {!adding && <Checkbox id={item.id} checked={item.complete} onChange={handleCheck} />}
     </div>
   )
 }
 
 ListItem.propTypes = {
-  item: PropTypes.instanceOf(Item)
+  item: PropTypes.instanceOf(Item),
+  adding: PropTypes.bool,
+  onAbort: PropTypes.func,
+  onSave: PropTypes.func
 };
