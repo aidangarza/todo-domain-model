@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-main">
+      <div className="App-inner">
         {Object.values(lists || {}).map(list => (
           <ListUpdater list={list} key={list.id} />
         ))}

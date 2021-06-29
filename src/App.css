@@ -4,7 +4,7 @@
   min-width: 100%;
 }
 
-.App-main {
+.App-inner {
   background-color: #282c34;
   min-height: 94vh;
   display: inline-flex;
@@ -14,6 +14,6 @@
   padding: 3vh;
 }
 
-.App-main > * + * {
+.App-inner > * + * {
   margin-left: 1vw;
 }

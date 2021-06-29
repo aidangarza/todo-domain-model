@@ -6,6 +6,12 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
+if (process.env.NODE_ENV !== 'production') {
+  const axe = require('@axe-core/react');
+  // run accessibility checks in development that print to the console, debounced 2000ms between component updates
+  axe(React, ReactDOM, 2000);
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
